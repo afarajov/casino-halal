@@ -1,0 +1,9 @@
+[
+    {
+        "name": "ali",
+        "password": "8e1b124b9b5ae4e0821a24f27dfbbe6cc33fd754",
+        "balance": 10000,
+        "active": true,
+        "last_deposit": "2025-07-01"
+    }
+]
