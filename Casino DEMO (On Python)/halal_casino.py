@@ -141,7 +141,6 @@ class Casino:
         choice = input("\nChoose a game:\n... ")
         if choice.lower() == "cups and balls":
             self.cups()
-            self.games()
         elif choice.lower() == "rulet":
             self.rulet()
         elif choice.lower() == "blackjack":
