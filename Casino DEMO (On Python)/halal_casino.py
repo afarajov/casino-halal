@@ -131,7 +131,7 @@ class Casino:
             self.interface()
 
     def games(self):
-        games_list = ['Cups and balls', 'Slots', 'Lucky More', 'BlackJack', 'Rulet', 'Back']
+        games_list = ['Cups and balls', 'Lucky More', 'BlackJack', 'Rulet', 'Back']
 
         print("\n-------GAMES--------")
         for game in games_list:
