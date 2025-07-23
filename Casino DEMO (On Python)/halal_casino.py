@@ -69,7 +69,7 @@ class Casino:
 
         for user in users:
             if user['name'] == acc_name:
-                print("Ups, this name is taken, try another.")
+                print("Ooooopse, this name is taken, try another.")
                 time.sleep(1)
                 self.create_acc()
 
