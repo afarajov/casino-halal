@@ -3,7 +3,6 @@ import os
 import time
 import hashlib
 import random
-import vlc
 from datetime import date
 from colorama import Fore, init
 
@@ -24,7 +23,7 @@ class Casino:
                 user['balance'] += money
                 break
 
-        with open("data.json", "w") as file:
+        with open("./data.json", "w") as file:
             json.dump(users, file, indent=4)
 
     def balance_decrease(self, money):
@@ -32,7 +31,7 @@ class Casino:
             if user == current_user:
                 user['balance'] -= money
 
-        with open("data.json", "w") as file:
+        with open("./data.json", "w") as file:
             json.dump(users, file, indent=4)
 
     def welcome(self):
@@ -69,7 +68,7 @@ class Casino:
 
         for user in users:
             if user['name'] == acc_name:
-                print("Ooooopse, this name is taken, try another.")
+                print("Ups, this name is taken, try another.")
                 time.sleep(1)
                 self.create_acc()
 
@@ -82,7 +81,7 @@ class Casino:
         }
         users.append(user_data)
 
-        with open("data.json", "w") as file:
+        with open("./data.json", "w") as file:
             json.dump(users, file, indent=4)
 
         print("\nAccount successfully created!")
@@ -98,7 +97,7 @@ class Casino:
         for user in users:
             if user['name'] == acc_name and user['password'] == acc_pass:
                 user['active'] = True
-                with open("data.json", "w") as file:
+                with open("./data.json", "w") as file:
                     json.dump(users, file, indent=4)
 
                 global current_user
@@ -131,7 +130,7 @@ class Casino:
             self.interface()
 
     def games(self):
-        games_list = ['Cups and balls', 'Lucky More', 'BlackJack', 'Rulet', 'Back']
+        games_list = ['Cups and balls', 'BlackJack', 'Rulet', 'Back']
 
         print("\n-------GAMES--------")
         for game in games_list:
@@ -203,9 +202,6 @@ Rulet bet options:
             self.rulet_choice()
 
     def rulet_colours(self, green_number, black_number, red_number):
-        wheel_url = "https://zvukipro.com/uploads/files/2021-02/1612959435_roulette-wheel-throw-1.mp3"
-        player = vlc.MediaPlayer(wheel_url)
-
         winning_number = random.randrange(37)
         print('----------------------------')
 
@@ -217,8 +213,7 @@ Rulet bet options:
         money = self.bets()
 
         print("\nRulet is spinning...")
-        player.play()
-        time.sleep(9)
+        time.sleep(5)
         print("\nThe ball hits in....")
         time.sleep(3)
 
@@ -253,9 +248,6 @@ Rulet bet options:
             self.rulet()
 
     def rulet_numbers(self, green_number, black_number, red_number):
-        wheel_url = "https://zvukipro.com/uploads/files/2021-02/1612959435_roulette-wheel-throw-1.mp3"
-        player = vlc.MediaPlayer(wheel_url)
-
         winning_number = random.randrange(37)
         choice_numbers = input('\nWhat number will you set?:\n... ')
         if not choice_numbers.isdigit() or (int(choice_numbers) > 36 or int(choice_numbers) < 0):
@@ -267,7 +259,6 @@ Rulet bet options:
         money = self.bets()
 
         print("\nRulet is spinning...")
-        player.play()
         time.sleep(9)
         print("\nThe ball hits in....")
         time.sleep(3)
@@ -517,7 +508,7 @@ _____   _____   _____
                     for user in users:
                         if user == current_user:
                             user['last_deposit'] = date.today().isoformat()
-                    with open("data.json", "w") as file:
+                    with open("./data.json", "w") as file:
                         json.dump(users, file, indent=4)
 
                     money = int(money)
@@ -587,7 +578,7 @@ _____   _____   _____
             for user in users:
                 if user == current_user:
                     users.remove(user)
-            with open("data.json", "w") as file:
+            with open("./data.json", "w") as file:
                 json.dump(users, file, indent=4)
 
             print(f"\nYour account was successfuly deleted.")
@@ -608,7 +599,7 @@ _____   _____   _____
             for user in users:
                 if user == current_user:
                     user['name'] = new_profile_name
-            with open("data.json", "w") as file:
+            with open("./data.json", "w") as file:
                 json.dump(users, file, indent=4)
 
             print(f"\nName was successfully changed!")
@@ -643,7 +634,7 @@ _____   _____   _____
             for user in users:
                 if user == current_user:
                     user['password'] = new_profile_password
-            with open("data.json", "w") as file:
+            with open("./data.json", "w") as file:
                 json.dump(users, file, indent=4)
 
             print(f"\nPassword was successfully changed!")
@@ -659,7 +650,7 @@ _____   _____   _____
         for user in users:
             if user == current_user:
                 user['active'] = False
-        with open("data.json", "w") as file:
+        with open("./data.json", "w") as file:
             json.dump(users, file, indent=4)
 
         print("Logging out...")
@@ -669,10 +660,10 @@ _____   _____   _____
 
 # get all users
 try:
-    if os.stat("data.json").st_size == 0:
+    if os.stat("./data.json").st_size == 0:
         users = []
     else:
-        with open("data.json", "r") as file:
+        with open("./data.json", "r") as file:
             users = json.load(file)
 except FileNotFoundError:
     users = []
