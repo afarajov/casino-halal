@@ -4,9 +4,6 @@ import time
 import hashlib
 import random
 from datetime import date
-from colorama import Fore, init
-
-init(autoreset=True)
 
 
 class Casino:
@@ -218,27 +215,27 @@ Rulet bet options:
         time.sleep(3)
 
         if winning_number in green_number:
-            print(f'\n{Fore.GREEN}{winning_number}')
+            print(f'\n{winning_number}')
         elif winning_number in red_number:
-            print(f'\n{Fore.RED}{winning_number}')
+            print(f'\n{winning_number}')
         elif winning_number in black_number:
-            print(f'\n{Fore.BLACK}{winning_number}')
+            print(f'\n{winning_number}')
         time.sleep(1)
 
         if choice == 'green' and winning_number in green_number:
             money *= 35
             self.balance_increase(money)
-            print(f"\n{Fore.GREEN}Congratulations!! You won {money * 36 / 35}$")
+            print(f"\nCongratulations!! You won {money * 36 / 35}$")
             time.sleep(2)
             self.rulet()
         elif choice == 'red' and winning_number in red_number:
             self.balance_increase(money)
-            print(f"\n{Fore.RED}Congratulation!! You won {money * 2}$")
+            print(f"\nCongratulation!! You won {money * 2}$")
             time.sleep(2)
             self.rulet()
         elif choice == 'black' and winning_number in black_number:
             self.balance_increase(money)
-            print(f"\n{Fore.BLACK}Congratulations!! You won {money * 2}$")
+            print(f"\nCongratulations!! You won {money * 2}$")
             time.sleep(2)
             self.rulet()
         else:
