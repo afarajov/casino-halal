@@ -1,0 +1,138 @@
+/* === Design tokens === */
+:root {
+  /* Surfaces */
+  --bg-deep:      #0a0f17;
+  --bg:           #0e141d;
+  --surface:      #161e2a;
+  --surface-2:    #1b2433;
+  --surface-3:    #222d3f;
+  --border:       #2a3447;
+  --border-soft:  #1f2737;
+
+  /* Brand */
+  --gold:         #c8a45c;
+  --gold-bright:  #e6c87a;
+  --gold-deep:    #8c7038;
+  --emerald:      #1f7a5a;
+  --emerald-deep: #134935;
+
+  /* Text */
+  --ink:          #ece4d0;
+  --ink-soft:     #d6d2c6;
+  --body:         #c3c6cd;
+  --muted:        #828a9c;
+  --mute-2:       #5a6273;
+
+  /* Signal */
+  --danger:       #b6534f;
+  --danger-deep:  #6f2c2a;
+  --success:      #4ea783;
+  --warning:      #d9a45b;
+
+  /* Layout */
+  --topbar-h:     72px;
+  --radius:       12px;
+  --radius-lg:    20px;
+  --radius-sm:    8px;
+  --shadow-lg:    0 30px 80px -20px rgba(0,0,0,.6), 0 8px 24px -8px rgba(0,0,0,.4);
+  --shadow:       0 12px 32px -12px rgba(0,0,0,.55);
+  --shadow-sm:    0 2px 8px rgba(0,0,0,.35);
+  --shadow-gold:  0 0 0 1px rgba(200,164,92,.25), 0 12px 36px -12px rgba(200,164,92,.35);
+
+  /* Motion */
+  --ease:         cubic-bezier(.2,.7,.2,1);
+  --ease-soft:    cubic-bezier(.4,.0,.2,1);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--body);
+  background: var(--bg-deep);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', 'Iowan Old Style', 'Apple Garamond', serif;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: .002em;
+  margin: 0 0 .6em;
+  line-height: 1.15;
+}
+h1 { font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 500; }
+h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 500; }
+h3 { font-size: 1.35rem; }
+h4 { font-size: 1.1rem; }
+p  { margin: 0 0 1em; }
+
+a {
+  color: var(--gold-bright);
+  text-decoration: none;
+  transition: color .2s var(--ease);
+}
+a:hover { color: var(--gold); }
+
+em { font-style: italic; color: var(--gold); font-family: 'Cormorant Garamond', serif; font-weight: 500; }
+
+::selection { background: var(--gold); color: var(--bg); }
+
+/* === Subtle decorative background === */
+#bg-pattern {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% -10%, rgba(200,164,92,.08), transparent 50%),
+    radial-gradient(ellipse at 80% 110%, rgba(31,122,90,.08), transparent 50%),
+    var(--bg-deep);
+}
+#bg-pattern::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: .035;
+  background-image:
+    /* Eight-pointed star motif — generated via two rotated diamonds */
+    linear-gradient(45deg, transparent 46%, var(--gold) 47%, var(--gold) 53%, transparent 54%),
+    linear-gradient(-45deg, transparent 46%, var(--gold) 47%, var(--gold) 53%, transparent 54%);
+  background-size: 80px 80px, 80px 80px;
+  background-position: 0 0, 40px 40px;
+  mix-blend-mode: screen;
+}
+
+/* === Utility === */
+.center { text-align: center; }
+.muted  { color: var(--muted); }
+.gold   { color: var(--gold); }
+.row    { display: flex; gap: 1rem; align-items: center; }
+.row-wrap { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.col    { display: flex; flex-direction: column; gap: 1rem; }
+.spacer { flex: 1; }
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 1.5rem 0;
+  border: 0;
+}
+.gold-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+}
+.gold-divider::before, .gold-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+}

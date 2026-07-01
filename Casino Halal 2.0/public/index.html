@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Casino Halal — A Mindful Game Room</title>
+  <meta name="description" content="A halal-spirited casino simulator. Self-funded virtual play money, no real winnings, just the games." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/games.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+</head>
+<body>
+  <div id="bg-pattern" aria-hidden="true"></div>
+
+  <header id="topbar" hidden>
+    <a href="#/lobby" class="brand">
+      <span class="brand-mark" aria-hidden="true">٭</span>
+      <span class="brand-text">Casino <em>Halal</em></span>
+    </a>
+    <nav id="primary-nav"></nav>
+    <div class="topbar-right">
+      <a href="#/profile" class="balance-chip" id="balance-chip" title="Your balance">
+        <span class="balance-label">Balance</span>
+        <span class="balance-value" id="balance-value">$0.00</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="view" class="view"></main>
+
+  <div id="toast-stack" aria-live="polite"></div>
+  <div id="modal-root"></div>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

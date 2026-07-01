@@ -1,0 +1,20 @@
+{
+  "name": "casino-halal-2",
+  "version": "2.0.0",
+  "description": "Halal-friendly casino simulator with self-funded virtual balance.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^12.11.1",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0"
+  }
+}

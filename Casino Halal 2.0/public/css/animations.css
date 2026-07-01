@@ -1,0 +1,76 @@
+/* View transitions */
+.view-fade-in {
+  animation: viewIn .35s var(--ease);
+}
+@keyframes viewIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200,164,92,.2) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+@keyframes shimmer {
+  from { background-position: -100% 0; }
+  to   { background-position: 100% 0; }
+}
+
+.pulse-gold {
+  animation: pulseGold 1.4s ease-in-out infinite;
+}
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200,164,92,.5); }
+  50%      { box-shadow: 0 0 0 12px rgba(200,164,92,0); }
+}
+
+.win-flash {
+  animation: winFlash .9s var(--ease);
+}
+@keyframes winFlash {
+  0%   { box-shadow: 0 0 0 0 rgba(200,164,92,0); }
+  30%  { box-shadow: 0 0 0 8px rgba(200,164,92,.4); }
+  100% { box-shadow: 0 0 0 24px rgba(200,164,92,0); }
+}
+
+.bounce-in {
+  animation: bounceIn .55s var(--ease) backwards;
+}
+@keyframes bounceIn {
+  0%   { opacity: 0; transform: scale(.7); }
+  60%  { opacity: 1; transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.fly-up {
+  animation: flyUp 1.2s var(--ease) forwards;
+}
+@keyframes flyUp {
+  0%   { opacity: 0; transform: translateY(20px); }
+  20%  { opacity: 1; transform: translateY(0); }
+  80%  { opacity: 1; transform: translateY(-40px); }
+  100% { opacity: 0; transform: translateY(-80px); }
+}
+
+/* Card flip */
+.flip-3d {
+  perspective: 800px;
+}
+.flip-3d > * {
+  transition: transform .55s var(--ease);
+  transform-style: preserve-3d;
+}
+.flip-3d.flipped > * { transform: rotateY(180deg); }
+.face, .back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.back { transform: rotateY(180deg); }
